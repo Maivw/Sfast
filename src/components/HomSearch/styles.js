@@ -1,0 +1,70 @@
+import {StyleSheet} from 'react-native';
+export const styles = StyleSheet.create({
+  arrowIcon: {
+    marginLeft: 5,
+    color: '#5e5d5c',
+  },
+  clockIcon: {
+    marginRight: 5,
+    color: '#5e5d5c',
+  },
+  clockIconLighter: {
+    color: '#fff',
+  },
+
+  inputBox: {
+    backgroundColor: '#EEEEEE',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingTop: 15,
+    paddingBottom: 15,
+    alignItems: 'center',
+  },
+  inputText: {
+    color: '#111',
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginLeft: 20,
+  },
+  iconWrapper: {
+    backgroundColor: '#e3d405',
+    borderRadius: 25,
+    borderWidth: 1,
+    borderColor: '#fff',
+    padding: 10,
+    marginLeft: 20,
+    alignItems: 'center',
+  },
+  row: {
+    display: 'flex',
+    flexDirection: 'row',
+    borderBottomWidth: 1,
+    justifyContent: 'flex-start',
+    textAlign: 'center',
+    alignItems: 'center',
+    paddingTop: 5,
+    paddingBottom: 5,
+    borderColor: '#b5b5ae',
+    backgroundColor: '#f7f7f7',
+  },
+  timeContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    borderWidth: 1,
+    borderColor: '#403c34',
+    backgroundColor: '#fff',
+    marginRight: 20,
+    paddingHorizontal: 15,
+    borderRadius: 25,
+    borderColor: '#fff',
+    paddingVertical: 10,
+    textAlign: 'center',
+  },
+  text: {
+    color: '#5e5d5c',
+    fontSize: 16,
+    paddingHorizontal: 5,
+  },
+});
