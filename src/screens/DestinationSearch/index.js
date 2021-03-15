@@ -7,11 +7,11 @@ import PlaceRow from "./placeRow"
 
 const homePlace = {
   description: 'Home',
-  geometry: {location: {lat: 48.8152937, lng: 2.4597668}},
+  geometry: {location: {latitude: 48.8152937, longtitude: 2.4597668}},
 };
 const workPlace = {
   description: 'Work',
-  geometry: {location: {lat: 48.8496818, lng: 2.2940881}},
+  geometry: {location: {latitude: 48.8496818, longtitude: 2.2940881}},
 };
 
 function DestinationSearch({ navigation }) {

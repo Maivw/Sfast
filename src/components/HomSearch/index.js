@@ -46,7 +46,6 @@ function HomeSearch() {
         </View>
         <Text style={styles.text}>Home</Text>
       </View>
-      {/* Home destination */}
     </View>
   );
 }

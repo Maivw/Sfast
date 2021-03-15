@@ -5,17 +5,17 @@ import {styles} from './styles';
 import MapViewDirections from 'react-native-maps-directions';
 const GOOGLE_MAPS_APIKEY = 'AIzaSyBz6nwfaz00TcGhrBTs69sZdNgd0JPVP3g';
 
-function RouteMap() {
-  const origin = {
-    latitude: 37.78825,
-    longitude: -122.4324,
+function RouteMap({origin, destination}) {
+  console.log("dddd", origin);
+  console.log("eee", destination);
+  const originLocation = { 
+    latitude: origin.details.geometry.location.lat,
+    longitude: origin.details.geometry.location.lng,
   };
-
-  const destination = {
-    latitude: 37.7682,
-    longitude: -122.4324,
+  const destinationLocation = {
+    latitude: destination.details.geometry.location.lat,
+    longitude: destination.details.geometry.location.lng,
   };
-
   return (
     <View>
       <MapView
@@ -29,26 +29,24 @@ function RouteMap() {
           longitudeDelta: 0.0421,
         }}>
         <MapViewDirections
-          origin={origin}
-          destination={destination}
+          origin={originLocation}
+          destination={destinationLocation}
           apikey={GOOGLE_MAPS_APIKEY}
           strokeWidth={5}
           strokeColor="green"
         />
         <Marker
           draggable
-          coordinate={{latitude: origin.latitude, longitude: origin.longitude}}
+          coordinate={originLocation}
           title={'Origin'}
-          onDragEnd={(e) => {console.log('dragEnd', e.nativeEvent.coordinate)}}
         />
         <Marker
           draggable
-          coordinate={{
-            latitude: destination.latitude,
-            longitude: destination.longitude,
-          }}
+          coordinate={
+            destinationLocation
+          }
           title={'Destination'}
-          onDragEnd={(e) => {console.log('dragEnd', e.nativeEvent.coordinate)}}
+          
         />
       </MapView>
     </View>

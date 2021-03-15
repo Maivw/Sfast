@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {View, Text,Pressable, Image} from 'react-native';
 import {styles} from "./styles";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
+import {Auth} from "aws-amplify";
 
 export default function About() {
   return(
@@ -26,6 +27,11 @@ export default function About() {
         <Pressable onPress={()=> console.warn("money")}>
           <View style={styles.wrapper}>
             <Text style={styles.makeMoneyRow}>Make money driving</Text>
+          </View>
+        </Pressable>
+        <Pressable onPress={()=> {Auth.signOut()}}>
+          <View style={styles.wrapperSignout}>
+            <Text style={styles.signout}>Sign out</Text>
           </View>
         </Pressable>
       </View>

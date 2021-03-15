@@ -65,10 +65,21 @@ export const styles = StyleSheet.create({
     fontSize: 24,
     marginLeft: 20
   },
+  signout:{
+    backgroundColor: 'yellow',
+    paddingVertical: 10,
+    fontSize: 16,
+    textAlign: 'center',
+    fontWeight: 'bold'
+  },
   wrapper:{
     borderBottomColor: 'gray',
     borderBottomWidth: 1,
     marginHorizontal: 30
+  },
+  wrapperSignout:{
+    marginHorizontal: 30,
+    marginTop: 40,
   },
   userImage: {
     marginLeft: 20,

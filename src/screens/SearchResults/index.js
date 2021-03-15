@@ -12,7 +12,7 @@ function SearchResults({route}) {
   console.log("bbb", destinationPlace);
   return (
     <View style={styles.container}>
-      <RouteMap />
+      <RouteMap origin={originPlace} destination={destinationPlace}/>
       <CarTypes />
     </View>
   );
