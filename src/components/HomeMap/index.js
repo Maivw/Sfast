@@ -1,13 +1,33 @@
-import React from 'react';
-import {View, Image, FlatList} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {View, Image, Text} from 'react-native';
 import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
 import {styles} from './styles';
-import cars from '../../assets/data/cars';
+// import cars from '../../assets/data/cars';
+import {API, graphqlOperation} from "aws-amplify";
+import {listCars} from "../../graphql/queries";
 
 function RouteMap() {
+  const [cars, setCars] = useState([]);
+  useEffect(() => {
+    const fetchCars = async() => {
+      try {
+        const res = await API.graphql(
+          graphqlOperation(
+            listCars
+          )
+        );
+        setCars(res.data.listCars.items);
+      }catch(e){
+        console.log("ERRORRRR!!!",e);
+      }
+    };
+    console.log("before");
+    fetchCars();
+    console.log("after");
+  }, []);
   const getImage = (type) => {
     if (type === 'SfastXL') {
-      return require(`../../assets/SfastXL.jpg`);
+      return require(`../../assets/SfastXL-top.jpg`);
     } else if (type === 'SfastF') {
       return require(`../../assets/SfastF-top.jpg`);
     } else {
@@ -15,7 +35,7 @@ function RouteMap() {
     }
   };
   return (
-    <View>
+    <View >
       <MapView
         style={{height: '70%', width: '100%'}}
         provider={PROVIDER_GOOGLE}
@@ -30,7 +50,6 @@ function RouteMap() {
           <Marker 
             key={car.id}
             coordinate={{latitude: car.latitude, longitude: car.longitude}}>
-             {/* //coordinate={{latitude: 37.78825, longitude: -122.4324}}>  */}
             <Image source={getImage(car.type)} style={{ width:35, height: 35, transform: [
               {rotate:`${car.heading}deg`}
             ]}}/>
