@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, TextInput, SafeAreaView, Image} from 'react-native';
+import {View, Text, TextInput, SafeAreaView, Image, Pressable} from 'react-native';
 import {styles} from './styles';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-function CarType({car}) {
+function CarType({car, onPress, isSelected} ) {
  
   const getImage = () => {
     if (car.type === 'SfastXL') {
@@ -16,7 +16,7 @@ function CarType({car}) {
     }
   };
   return (
-    <View style={styles.container}>
+    <Pressable onPress={onPress} style={[styles.container],{backgroundColor: isSelected? '#ededed': 'white', flexDirection: 'row', paddingVertical: 20, paddingHorizontal: 15}}>
       <Image source={getImage(car.type)} style={styles.image} />
       <View style={styles.midContainer}>
         <Text style={styles.text}>
@@ -30,7 +30,7 @@ function CarType({car}) {
         <Ionicons name={'pricetag'} size={16} color={'#f5ed0a'} />
         <Text style={styles.price}>est. ${car.price}</Text>
       </View>
-    </View>
+    </Pressable>
   );
 }
 

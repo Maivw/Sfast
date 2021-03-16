@@ -1,13 +1,30 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Image, FlatList} from 'react-native';
 import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
 import {styles} from './styles';
 import MapViewDirections from 'react-native-maps-directions';
 const GOOGLE_MAPS_APIKEY = 'AIzaSyBz6nwfaz00TcGhrBTs69sZdNgd0JPVP3g';
+import {API, graphqlOperation, Auth} from "aws-amplify";
+import {listCars} from "../../graphql/queries";
 
 function RouteMap({origin, destination}) {
-  console.log("dddd", origin);
-  console.log("eee", destination);
+  const [cars, setCars] = useState([]);
+  useEffect(() => {
+    const fetchCars = async() => {
+      try {
+        const res = await API.graphql(
+          graphqlOperation(
+            listCars
+          )
+        );
+        setCars(res.data.listCars.items);
+      }catch(e){
+        console.log("ERRORRRR!!!",e);
+      }
+    };
+    fetchCars();
+   
+  }, []);
   const originLocation = { 
     latitude: origin.details.geometry.location.lat,
     longitude: origin.details.geometry.location.lng,

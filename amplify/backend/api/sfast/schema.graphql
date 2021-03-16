@@ -5,7 +5,7 @@ type User @model {
   orders: [Order] @connection(keyName: "byUser", fields: ["id"])
 }
 type Car @model {
-  id: ID!,
+  id: ID!
   type:String!
   latitude: Float,
   longitude: Float,
@@ -17,11 +17,17 @@ type Order @model
 @key(name: "byUser", fields: ["userId"])
 @key(name: "byCar", fields: ["carId", "createdAt"]){
   id: ID!
-  createdAt: ID!
+  createdAt: ID,
+  type: String!
+  originLatitude: Float!
+  originLongitude: Float!
+  desLatitude: Float!
+  desLongitude: Float!
+
   userId: ID!
   user: User @connection(fields:["userId"])
 
   carId: ID!
   car: Car @connection(fields:["carId"])
-
+  
 }

@@ -21,9 +21,8 @@ function RouteMap() {
         console.log("ERRORRRR!!!",e);
       }
     };
-    console.log("before");
     fetchCars();
-    console.log("after");
+   
   }, []);
   const getImage = (type) => {
     if (type === 'SfastXL') {
